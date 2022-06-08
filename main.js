@@ -15,7 +15,8 @@ function createWindow () {
   })
 
   // 加载 index.html
-  mainWindow.loadFile('dist/index.html') // 此处跟electron官网路径不同，需要注意
+  // mainWindow.loadFile('dist/index.html') // 将改行改为下面这一行，加载url
+  mainWindow.loadURL('http://localhost:3000')
 
   // 打开开发工具
   // mainWindow.webContents.openDevTools()
