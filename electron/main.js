@@ -3,6 +3,10 @@
 // 控制应用生命周期和创建原生浏览器窗口的模组
 const { app, BrowserWindow } = require('electron')
 const path = require('path')
+// 控制台waring -> https://www.chfse.com/archives/2495
+process.env['ELECTRON_DISABLE_SECURITY_WARNINGS'] = 'true'
+
+const NODE_ENV = process.env.NODE_ENV // 开发环境变量
 
 function createWindow () {
   // 创建浏览器窗口
@@ -16,10 +20,16 @@ function createWindow () {
 
   // 加载 index.html
   // mainWindow.loadFile('dist/index.html') // 将改行改为下面这一行，加载url
-  mainWindow.loadURL('http://localhost:3000')
+  mainWindow.loadURL(
+    NODE_ENV === 'development'
+      ? 'http://localhost:3000'
+      : `file://${path.join(__dirname, '../dist/index.html')}`
+  )
 
-  // 打开开发工具
-  // mainWindow.webContents.openDevTools()
+  if (NODE_ENV === 'development') {
+    // 打开开发工具
+    mainWindow.webContents.openDevTools()
+  }
 }
 
 // 这段程序将会在 Electron 结束初始化
