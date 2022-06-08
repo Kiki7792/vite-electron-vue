@@ -1,5 +1,5 @@
 <template>
-  <h1>ewtyytwy</h1>
+  <h1>{{ baseUrl }}</h1>
   <img alt="Vue logo" src="./assets/logo.png" />
   <HelloWorld msg="Hello Vue 3 + TypeScript + Vite" />
 </template>
@@ -8,6 +8,7 @@
 // This starter template is using Vue 3 <script setup> SFCs
 // Check out https://vuejs.org/api/sfc-script-setup.html#script-setup
 import HelloWorld from './components/HelloWorld.vue'
+const baseUrl = import.meta.env.VITE_APP_BASEAPI
 </script>
 
 <style>

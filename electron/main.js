@@ -6,6 +6,7 @@ const path = require('path')
 // 控制台waring -> https://www.chfse.com/archives/2495
 process.env['ELECTRON_DISABLE_SECURITY_WARNINGS'] = 'true'
 
+console.log('vv--', process.env.NODE_ENV)
 const NODE_ENV = process.env.NODE_ENV // 开发环境变量
 
 function createWindow () {
